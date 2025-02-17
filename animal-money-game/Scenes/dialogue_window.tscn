@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://baqxmdlds3fcf"]
+
+[ext_resource type="Texture2D" uid="uid://dylyfmi0cuecb" path="res://assets/characters/bars.png" id="1_2y4j8"]
+[ext_resource type="Theme" uid="uid://b0i4ldd8jsvpy" path="res://assets/themes/theme.tres" id="1_iqhe0"]
+[ext_resource type="FontFile" uid="uid://cbyw8htb1m53i" path="res://assets/fonts/BleekerCyrillic.ttf" id="2_tjvq5"]
+[ext_resource type="Script" path="res://dialog_logic.gd" id="3_hkcly"]
+[ext_resource type="PackedScene" uid="uid://cevt25wuhlf0h" path="res://Scenes/character.tscn" id="4_ep1ws"]
+[ext_resource type="PackedScene" uid="uid://b7hwjb3ddup7" path="res://Scenes/trade_ui.tscn" id="5_hriuc"]
+[ext_resource type="Texture2D" uid="uid://couurqfutm262" path="res://assets/menu/Arrow.png" id="5_thuda"]
+[ext_resource type="Script" path="res://VoicePlayer.gd" id="6_gh3ed"]
+[ext_resource type="AudioStream" uid="uid://bm7be5cl23tlf" path="res://assets/sfx/Bars.wav" id="8_fq2ut"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2riq6"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[node name="DialogueWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(322, 29)
+texture = ExtResource("1_2y4j8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_left = 90.0
+offset_top = 126.0
+offset_right = 1505.0
+offset_bottom = 313.0
+theme = ExtResource("1_iqhe0")
+
+[node name="DialogueLine" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 35.0
+offset_right = 1344.0
+offset_bottom = 169.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tjvq5")
+theme_override_font_sizes/font_size = 28
+text = "Я хочу к маме"
+autowrap_mode = 3
+
+[node name="DialogLogic" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_hkcly")
+character_scene = ExtResource("4_ep1ws")
+tradeUI_scene = ExtResource("5_hriuc")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 625.0
+offset_top = 100.0
+offset_right = 962.0
+offset_bottom = 155.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2riq6")
+
+[node name="speakerName" type="Label" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -669.5
+offset_top = -34.0
+offset_right = 669.5
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_iqhe0")
+theme_override_fonts/font = ExtResource("2_tjvq5")
+theme_override_font_sizes/font_size = 28
+text = "Барс "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(1408, 261)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_thuda")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visibility_layer = 524288
+z_index = 100
+position = Vector2(171, 161)
+stream = ExtResource("8_fq2ut")
+script = ExtResource("6_gh3ed")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://clrtrklcomy4p"]
+
+[ext_resource type="Texture2D" uid="uid://cjv7exq8v0oqg" path="res://assets/menu/CounterBar.png" id="1_wmqv7"]
+[ext_resource type="FontFile" uid="uid://bcxlkps23ca0j" path="res://assets/fonts/genei-pople.ttf" id="2_ldyyg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ogo5j"]
+font = ExtResource("2_ldyyg")
+font_size = 35
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 0.533333)
+
+[node name="CounterBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-14, -1.5)
+texture = ExtResource("1_wmqv7")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -36.0
+offset_top = -22.0
+offset_right = 53.0
+offset_bottom = 24.0
+text = "0"
+label_settings = SubResource("LabelSettings_ogo5j")
+horizontal_alignment = 1
+vertical_alignment = 1
