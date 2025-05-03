@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://3juway1078y"]
+
+[ext_resource type="Texture2D" uid="uid://da3tgwgyx32m8" path="res://assets/characters/wolf.png" id="2_g6unj"]
+[ext_resource type="Script" uid="uid://d0talpxr11yyt" path="res://scripts/npc.gd" id="2_xxsvc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acqhf"]
+size = Vector2(510, 576)
+
+[node name="NPC" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_xxsvc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(191, 245)
+texture = ExtResource("2_g6unj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(169, 250)
+shape = SubResource("RectangleShape2D_acqhf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

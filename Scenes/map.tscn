@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0o336j5o1doy"]
+
+[ext_resource type="Texture2D" uid="uid://c4bocsb7exyci" path="res://assets/menu/bg2.png" id="1_0v2ju"]
+[ext_resource type="PackedScene" uid="uid://dcaiwnkxxr7kp" path="res://Scenes/logic.tscn" id="1_ml6n0"]
+[ext_resource type="Script" uid="uid://f1hrqulfhsu4" path="res://scripts/fade.gd" id="2_4c2oa"]
+[ext_resource type="PackedScene" uid="uid://cevt25wuhlf0h" path="res://Scenes/character.tscn" id="2_d8nt3"]
+[ext_resource type="PackedScene" uid="uid://dkoiworwj16wc" path="res://Scenes/border.tscn" id="3_pbe46"]
+[ext_resource type="PackedScene" uid="uid://baqxmdlds3fcf" path="res://Scenes/dialogue_window.tscn" id="6_0kwql"]
+[ext_resource type="PackedScene" uid="uid://clrtrklcomy4p" path="res://Scenes/counter_bar.tscn" id="6_et42v"]
+[ext_resource type="PackedScene" uid="uid://b7hwjb3ddup7" path="res://Scenes/trade_ui.tscn" id="7_h4c8b"]
+[ext_resource type="PackedScene" uid="uid://bxscwgs4oq7a6" path="res://Scenes/new_item.tscn" id="8_au23a"]
+
+[node name="Map" type="Node"]
+
+[node name="Logic" parent="." instance=ExtResource("1_ml6n0")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(800, 370)
+texture = ExtResource("1_0v2ju")
+
+[node name="Border" parent="." instance=ExtResource("3_pbe46")]
+position = Vector2(4, 374)
+
+[node name="Border2" parent="." instance=ExtResource("3_pbe46")]
+position = Vector2(1598, 381)
+
+[node name="Border3" parent="." instance=ExtResource("3_pbe46")]
+position = Vector2(1651, 399)
+rotation = 1.5708
+scale = Vector2(1, 4)
+
+[node name="Border4" parent="." instance=ExtResource("3_pbe46")]
+position = Vector2(1641, 749)
+rotation = 1.5708
+scale = Vector2(1, 4)
+
+[node name="Character" parent="." instance=ExtResource("2_d8nt3")]
+visibility_layer = 512
+position = Vector2(184, 540)
+scale = Vector2(0.7, 0.7)
+
+[node name="LeafCounter" parent="." instance=ExtResource("6_et42v")]
+offset_left = 1409.0
+offset_top = 87.0
+offset_right = 1409.0
+offset_bottom = 87.0
+script = null
+
+[node name="NewItem" parent="." instance=ExtResource("8_au23a")]
+visible = false
+position = Vector2(800, 370)
+
+[node name="FadeRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 1000
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1600.0
+offset_bottom = 740.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_4c2oa")
+
+[node name="DialogueWindow" parent="." instance=ExtResource("6_0kwql")]
+visible = false
+
+[node name="TradeUI" parent="." instance=ExtResource("7_h4c8b")]
+visible = false
+
+[editable path="DialogueWindow"]

@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=3 uid="uid://baqxmdlds3fcf"]
+
+[ext_resource type="Texture2D" uid="uid://dylyfmi0cuecb" path="res://assets/characters/bars.png" id="1_2y4j8"]
+[ext_resource type="Theme" uid="uid://b0i4ldd8jsvpy" path="res://assets/themes/theme.tres" id="1_iqhe0"]
+[ext_resource type="FontFile" uid="uid://cbyw8htb1m53i" path="res://assets/fonts/BleekerCyrillic.ttf" id="2_tjvq5"]
+[ext_resource type="Script" uid="uid://clcxl3887gkil" path="res://dialog_logic.gd" id="3_hkcly"]
+[ext_resource type="PackedScene" uid="uid://cevt25wuhlf0h" path="res://Scenes/character.tscn" id="4_ep1ws"]
+[ext_resource type="PackedScene" uid="uid://b7hwjb3ddup7" path="res://Scenes/trade_ui.tscn" id="5_hriuc"]
+[ext_resource type="Texture2D" uid="uid://couurqfutm262" path="res://assets/menu/Arrow.png" id="5_thuda"]
+[ext_resource type="Script" uid="uid://djqvxsrqe2y5q" path="res://VoicePlayer.gd" id="6_gh3ed"]
+[ext_resource type="AudioStream" uid="uid://bm7be5cl23tlf" path="res://assets/sfx/Bars.wav" id="8_fq2ut"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2riq6"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[node name="DialogueWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(260, 391)
+texture = ExtResource("1_2y4j8")
+
+[node name="DialogLogic" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_hkcly")
+character_scene = ExtResource("4_ep1ws")
+tradeUI_scene = ExtResource("5_hriuc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visibility_layer = 524288
+z_index = 100
+position = Vector2(171, 161)
+stream = ExtResource("8_fq2ut")
+script = ExtResource("6_gh3ed")
+
+[node name="DialogueOptions" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(600, 253)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -307.0
+offset_right = 300.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1500, 256)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -750.0
+offset_top = -256.0
+offset_right = 750.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(1500, 185)
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_iqhe0")
+
+[node name="DialogueLine" type="Label" parent="MarginContainer/Panel"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 35.0
+offset_right = 1410.0
+offset_bottom = 160.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tjvq5")
+theme_override_font_sizes/font_size = 28
+text = "Я хочу к маме"
+autowrap_mode = 3
+
+[node name="Panel2" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2riq6")
+
+[node name="speakerName" type="Label" parent="MarginContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -669.5
+offset_top = -34.0
+offset_right = 669.5
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_iqhe0")
+theme_override_fonts/font = ExtResource("2_tjvq5")
+theme_override_font_sizes/font_size = 28
+text = "Барс "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(1468, 650)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_thuda")
